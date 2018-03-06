@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue-dev/vue-dev/dist/vue.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.0/vue-resource.js"></script>
+    <title>vue</title>
+    <style>
+        #username{
+            overflow: hidden;
+
+        }
+
+
+    </style>
+   <script>
+       window.onload = function () {
+           //过滤器
+
+           new Vue({ //c
+               el:'#box',
+               data:{
+                   msg:'chenjia vue',
+                   msg2:12,
+                   msg3:true,
+                   arr:['apple','orange'],
+                   json:{a:'apple',b:'pear'},
+                   a:true,
+                   myData:[],
+                   username:'',
+                   age:'',
+                   nowIndex:-100
+               },
+               methods:{
+                   show:function () {
+                       alert(1);
+                   },
+                   add:function () {
+                       //this.arr.push('tomato');
+                       this.myData.push({
+                           name:this.username,
+                           age:this.age
+
+                       });
+                       this.username='';
+                       this.age='';
+                   },
+                   deleteMsg:function(n) {
+                       if(n == -2){
+                           this.myData=[];
+                       }else{
+                           this.myData.splice(n, 1);
+                       }
+
+                   },
+                   get:function () {
+                      this.$http.post('post.php',{
+                          a:1,
+                          b:2
+                      },{
+                          emulateJSON:true
+                      }).then(function (res) {
+                          alert(res.data);
+                      },function (res) {
+                          alert(res.status);
+                      });
+                   }
+
+               },
+               filters: {
+                   capitalize: function (value) {
+                       if (!value) return '';
+                       value = value.toString();
+                       return value.charAt(0).toUpperCase() + value.slice(1)
+                   }
+               }
+           });
+       }
+   </script>
+</head>
+<body>
+
+<div class="container" id="box">
+<!--   <input type="text" v-model="msg">
+    <br>
+    {{msg}}
+    <br>
+    <span    an v-once>{{msg}}</span>
+    <br>
+    <span v-html="msg"></span>-->
+    <!--{{msg|capitalize}}-->
+    <input type="button" value="确定" @click="get()">
+</div>
+</body>
+</html>
