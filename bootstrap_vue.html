@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue-dev/vue-dev/dist/vue.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <title>vue</title>
+
+   <script>
+       window.onload = function () {
+           new Vue({ //c
+               el:'#box',
+               data:{
+                   msg:'chenjia vue',
+                   msg2:12,
+                   msg3:true,
+                   arr:['apple','orange'],
+                   json:{a:'apple',b:'pear'},
+                   a:true
+               },
+               methods:{
+                   show:function () {
+                       alert(1);
+                   },
+                   add:function () {
+                       this.arr.push('tomato');
+                   }
+               }
+           });
+       }
+   </script>
+</head>
+<body>
+
+<div class="container">
+    <form role="form">
+        <div class="form-group">
+            <label for="username">用户名：</label>
+            <input type="text" class="form-control" id="username" placeholder="输入用户名">
+        </div>
+        <div class="form-group">
+            <label for="age">年龄：</label>
+            <input type="text" class="form-control" id="age" placeholder="输入年龄">
+        </div>
+        <div class="form-group">
+            <input type="button" value="添加" class="btn btn-primary">
+            <input type="button" value="重置" class="btn btn-danger">
+        </div>
+
+    </form>
+    <hr>
+    <table class="table table-bordered table-hover">
+        <caption class="h2 text-info text-center">用户信息表</caption>
+        <tr>
+            <th class="text-center">序号</th>
+            <th class="text-center">名字</th>
+            <th class="text-center">年龄</th>
+            <th class="text-center">删除</th>
+        </tr>
+        <tr class="text-center">
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>
+                <button class="btn btn-primary btn-sm">删除</button>
+            </td>
+
+        </tr>
+        <tr class="text-center">
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>
+                <button class="btn btn-primary btn-sm">删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="td text-right" colspan="4">
+
+                <button class="btn btn-danger btn-sm">删除全部</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="text-center text-muted" colspan="4">
+                <p>暂无数据....</p>
+            </td>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>
